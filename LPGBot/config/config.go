@@ -10,13 +10,14 @@ import (
 var (
 	Token string //Token of the bot (discord)
 	BotPrefix string //For the exclamation mark before the cmd
-
+	Webhook string
 	config *configStruct
 )
 
 type configStruct struct {
 	Token string `json:"Token"`
 	BotPrefix string `json:"BotPrefix"`
+	Webhook string `json:"Webhook"`
 }
 
 func ReadConfig() error {
@@ -37,6 +38,7 @@ func ReadConfig() error {
 
 	Token = config.Token
 	BotPrefix = config.BotPrefix
+	Webhook = config.Webhook
 
 	return nil
 }
