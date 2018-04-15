@@ -10,15 +10,16 @@ import (
 )
 
 
-type JokeBody struct {
-	Id	int	`json:"id"`
-	Joke	string	`json:"joke"`
-	Date	int	`json:"date"`
-	Vote	int	`json:"vote"`
-	Points	int `json:"points"`
+type JokeApiResponse struct {
+	Value JokeBody `json:"value`
+	Type  string   `json:"type`
 }
 
-//type Joke []JokeBody
+type JokeBody struct {
+	Id         int      `json:"id"`
+	Joke       string   `json:"joke"`
+	Categories []string `json:"categories"`
+}
 
 //Send joke
 func sendJoke() (err error) {
@@ -44,7 +45,7 @@ func sendJoke() (err error) {
 
 //Fetch Chuck Norris Joke
 func getJoke() (string, error) {
-	resp, err := http.Get("http://www.chucknorrisfacts.fr/api/get?data=tri:alea;type:txt;nb:1")
+	resp, err := http.Get("http://api.icndb.com/jokes/random")
 	if err != nil {
 		fmt.Println("Could not fetch joke")
 		return "nil", err
@@ -55,8 +56,8 @@ func getJoke() (string, error) {
 		return "nil", err
 	}
 
-	var jokeResp JokeBody
+	var jokeResp JokeApiResponse
 	json.Unmarshal(body, &jokeResp)
 	fmt.Println(jokeResp)
-	return jokeResp.Joke, nil
+	return jokeResp.Value.Joke, nil
 }
