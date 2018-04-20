@@ -1,9 +1,12 @@
 package main
 
 import (
-	"./config"
 	"fmt"
-	"./bot"
+)
+
+import (
+	"LPG-Bot/LPGBot/config"
+	"LPG-Bot/LPGBot/bot"
 )
 
 func main() {

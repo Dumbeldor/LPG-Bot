@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"encoding/json"
-	"../config"
+	"LPG-Bot/LPGBot/config"
 )
 
 

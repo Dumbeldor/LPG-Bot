@@ -3,7 +3,7 @@ package bot
 import (
 	"github.com/bwmarrin/discordgo"
 	"fmt"
-	"../config"
+	"LPG-Bot/LPGBot/config"
 	"strings"
 )
 
@@ -53,6 +53,14 @@ func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate)  {
 				fmt.Println(err)
 			}
 		}
+
+		if m.Content == "!test" {
+			err := testJoke()
+			if err != nil {
+				fmt.Println(err)
+			}
+		}
+
 
 	}
 
